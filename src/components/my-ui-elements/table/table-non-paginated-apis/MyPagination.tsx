@@ -1,7 +1,6 @@
 import Pagination from "@mui/material/Pagination";
 import "./index.css";
 import { type TableNonPagApiProps } from "./TableNonPagApi";
-import React from "react";
 
 function MyPagination<TData>({ table }: TableNonPagApiProps<TData>) {
   const handleChange = (_: any, page: number): void => {
@@ -21,4 +20,4 @@ function MyPagination<TData>({ table }: TableNonPagApiProps<TData>) {
   );
 }
 
-export default React.memo(MyPagination) as typeof MyPagination;
+export default MyPagination;

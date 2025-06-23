@@ -11,14 +11,13 @@
 import { flexRender, type Table as TanstackTable } from "@tanstack/react-table";
 
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from "@/components/ui/table";
-import React from "react";
 
 // structure of props
 export interface TableNonPagApiProps<TData> {
@@ -26,7 +25,6 @@ export interface TableNonPagApiProps<TData> {
 }
 
 function TableNonPagApi<TData>({ table }: TableNonPagApiProps<TData>) {
-  console.log(table.getRowModel().rows?.length);
 
   return (
     <>
@@ -90,4 +88,4 @@ function TableNonPagApi<TData>({ table }: TableNonPagApiProps<TData>) {
   );
 }
 
-export default React.memo(TableNonPagApi) as typeof TableNonPagApi;
+export default TableNonPagApi;

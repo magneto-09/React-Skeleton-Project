@@ -1,13 +1,13 @@
 ("use client");
 
+import { getAllUsers } from "@/api-services/home.services";
+import { useQuery } from "@tanstack/react-query";
 import { type ColumnDef } from "@tanstack/react-table";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import Text from "../text/Text";
 import MyPagination from "./table-non-paginated-apis/MyPagination";
 import TableNonPagApi from "./table-non-paginated-apis/TableNonPagApi";
 import { useGlobalTable } from "./table-non-paginated-apis/useGlobalTable";
-import { useQuery } from "@tanstack/react-query";
-import { getAllUsers } from "@/api-services/home.services";
 
 // ************************************** Dummy Setup 🚀🚀**************************************
 
@@ -25,8 +25,6 @@ export default function DummyComponent() {
     queryFn: () => getAllUsers(),
     placeholderData: [],
   });
-
-  const [tableData, setTableData] = useState<AllUsers[]>([]);
 
   // Columns
   const columns: ColumnDef<AllUsers>[] = useMemo(
@@ -76,26 +74,20 @@ export default function DummyComponent() {
   );
 
   // Data
-  useEffect(() => {
-    if (getAllUserData) {
-      const transformedTableData =
-        getAllUserData?.map((elem: any) => ({
-          id: elem?.objId,
-          firstName: elem?.firstName,
-          lastName: elem?.lastName,
-          email: elem?.email,
-        })) ?? [];
- 
-      setTableData(transformedTableData);
-    }
+  const tableData: AllUsers[] = useMemo(() => {
+    return getAllUserData.map((elem: any) => ({
+      id: elem?.objId,
+      firstName: elem?.firstName,
+      lastName: elem?.lastName,
+      email: elem?.email,
+    }));
   }, [getAllUserData]);
 
-  // useEffect(() => console.log(tableData), [tableData]);
-
-  //   creating tanstack-table using useGlobalTable Hook(custom Hook)
+  // ✅ Hook call directly — NO MEMO
   const table = useGlobalTable({ columns, data: tableData });
 
-  console.log(table);
+  console.log("row count:", table.getRowModel().rows.length);
+  console.log("data", tableData);
 
   return (
     <div className="container mx-auto flex flex-col gap-24 justify-center border-2 border-blue-500 rounded-lg">
