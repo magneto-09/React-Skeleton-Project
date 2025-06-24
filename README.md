@@ -36,7 +36,7 @@ It blends the **minimalism of ShadCN**, the **power of MUI**, and **custom logic
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/magneto-09/ReactSkeletonProject.git
+git clone https://github.com/magneto-09/React-Skeleton-Project.git
 
 cd ReactSkeletonProject
 
