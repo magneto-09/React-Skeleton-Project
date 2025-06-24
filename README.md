@@ -1,54 +1,61 @@
-# React + TypeScript + Vite
+# 🚀 ReactSkeletonProject
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A blazing-fast, scalable **React Skeleton Project** with real-world architecture — purpose-built for production apps that depend on dynamic backend APIs.  
+It blends the **minimalism of ShadCN**, the **power of MUI**, and **custom logic to sync UI + data + state** — wrapped in a clean violet-themed aesthetic. 🎨
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tech Stack
 
-## Expanding the ESLint configuration
+| Layer      | Library/Tooling                        |
+|------------|----------------------------------------|
+| UI Core    | [React](https://react.dev/)            |
+| Styling    | [TailwindCSS](https://tailwindcss.com/) + `shadcn/ui (minimal)` + **Custom Violet Theme**
+| Components | [Material UI (MUI)](https://mui.com/) for advanced component needs (e.g. Modal, Pagination)
+| State Mgmt | [Zustand](https://zustand-demo.pmnd.rs/) (controlled table + filters + shared state)
+| Table      | [TanStack Table](https://tanstack.com/table) (with full control + backend sync)
+| Routing    | `react-router-dom`
+| Form       | `formik` + `yup` for schema-based form validation
+| API Layer  | `axios` + optional [TanStack Query](https://tanstack.com/query)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📦 Features
+
+- ⚙️ **Backend-Aware Design**: Table config (`columns`, `data`, `pagination`, `filters`) tightly coupled with backend API contracts.
+- 🧠 **Controlled TanStack Table**: A custom wrapper to sync internal state (pagination, sorting, filters) with Zustand & backend query params.
+- 🧱 **ShadCN Minimal Setup**: Only essentials from `shadcn/ui`, keeping the project lean but extendable.
+- 🎨 **Violet-Themed UI**: MUI + Tailwind + `index.css` violet overrides for a consistent, modern look.
+- 🧩 **Reusable Components**: Modal, Pagination, Table, Loader, and FormField — all extracted for reusability and isolation.
+- 🔁 **MUI Components as Fallback**: For components like Modal & Pagination, where ShadCN lacks fine-grained props.
+
+---
+
+## 🧪 How to Use
+
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/magneto-09/ReactSkeletonProject.git
+
+cd ReactSkeletonProject
+
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Start Dev Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+---
+
+## 💡 Suggestion
+
+**Configure** the table columns, filters, API handlers, etc. **based on your backend API design** and data structure to ensure full synchronization between UI state and server response.
+
+---
+
+## 📘 License
+
+**MIT** — use it, scale it, break it, and make it yours!
