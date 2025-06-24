@@ -5,15 +5,15 @@
 // table's internal state should be converted into controlled state.
 
 import {
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    useReactTable,
-    type ColumnDef,
-    type ColumnFiltersState,
-    type PaginationState,
-    type SortingState,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type PaginationState,
+  type SortingState,
 } from "@tanstack/react-table";
 import { useState } from "react";
 
@@ -28,7 +28,7 @@ export const useGlobalTable = <TData, TValue>({
 }: TableNonPagApiProps<TData, TValue>) => {
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 10,
+    pageSize: 3,
   });
 
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -40,7 +40,6 @@ export const useGlobalTable = <TData, TValue>({
   const table = useReactTable({
     data,
     columns,
-
     state: {
       pagination: pagination,
       sorting: sorting,
@@ -53,8 +52,8 @@ export const useGlobalTable = <TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     // for multi-sort
-    enableMultiSort: true,
-    isMultiSortEvent: () => true,
+    // enableMultiSort: true,
+    // isMultiSortEvent: () => true,
 
     // onXChange
     onPaginationChange: setPagination,

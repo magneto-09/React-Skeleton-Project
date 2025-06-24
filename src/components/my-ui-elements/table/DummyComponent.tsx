@@ -26,30 +26,74 @@ export default function DummyComponent() {
     placeholderData: [],
   });
 
-  // Columns
+  // Table Columns
   const columns: ColumnDef<AllUsers>[] = useMemo(
     () => [
       {
         accessorKey: "id",
-        header: "ID",
+        header: () => (
+          <div className="flex flex-1 justify-center">
+            <Text size="lg" strong={true}>
+              ID
+            </Text>
+          </div>
+        ),
+        cell: (row: any) => (
+          <div className="flex flex-1 justify-center">
+            <Text size="lg">{row?.getValue()}</Text>
+          </div>
+        ),
       },
       {
         accessorKey: "firstName",
-        header: "First Name",
+        header: () => (
+          <div className="flex flex-1 justify-center">
+            <Text size="lg" strong={true}>
+              First Name
+            </Text>
+          </div>
+        ),
+        cell: (row: any) => (
+          <div className="flex flex-1 justify-center">
+            <Text size="lg">{row?.getValue()}</Text>
+          </div>
+        ),
         enableSorting: true,
         enableGlobalFilter: true,
         enableColumnFilter: true,
       },
       {
         accessorKey: "lastName",
-        header: "Last Name",
+        header: () => (
+          <div className="flex flex-1 justify-center">
+            <Text size="lg" strong={true}>
+              Last Name
+            </Text>
+          </div>
+        ),
+        cell: (row: any) => (
+          <div className="flex flex-1 justify-center">
+            <Text size="lg">{row?.getValue()}</Text>
+          </div>
+        ),
         enableSorting: true,
         enableGlobalFilter: true,
         enableColumnFilter: true,
       },
       {
         accessorKey: "email",
-        header: "Email",
+        header: () => (
+          <div className="flex flex-1 justify-center">
+            <Text size="lg" strong={true}>
+              Email
+            </Text>
+          </div>
+        ),
+        cell: (row: any) => (
+          <div className="flex flex-1 justify-center">
+            <Text size="lg">{row?.getValue()}</Text>
+          </div>
+        ),
         enableSorting: true,
         enableGlobalFilter: true,
         enableColumnFilter: true,
@@ -57,13 +101,19 @@ export default function DummyComponent() {
 
       {
         id: "action",
-        header: "Action",
+        header: () => (
+          <div className="flex justify-end">
+            <Text size="lg" strong={true}>
+              Action
+            </Text>
+          </div>
+        ),
         cell: () => (
-          <div className="flex items-center gap-4">
-            <Text size="sm" type="success" className=" hover:cursor-pointer">
+          <div className="flex items-center justify-end gap-4">
+            <Text type="success" className=" hover:cursor-pointer">
               Edit
             </Text>
-            <Text size="sm" type="success" className=" hover:cursor-pointer">
+            <Text type="success" className=" hover:cursor-pointer">
               Update
             </Text>
           </div>
@@ -73,7 +123,7 @@ export default function DummyComponent() {
     []
   );
 
-  // Data
+  // Table Data
   const tableData: AllUsers[] = useMemo(() => {
     return getAllUserData.map((elem: any) => ({
       id: elem?.objId,
@@ -83,19 +133,24 @@ export default function DummyComponent() {
     }));
   }, [getAllUserData]);
 
-  // ✅ Hook call directly — NO MEMO
   const table = useGlobalTable({ columns, data: tableData });
 
-  console.log("row count:", table.getRowModel().rows.length);
-  console.log("data", tableData);
+  // console.log(table.getState());
 
+  // memoize it
+  const memoTable = useMemo(() => table, [getAllUserData]);
   return (
     <div className="container mx-auto flex flex-col gap-24 justify-center border-2 border-blue-500 rounded-lg">
-      <div className="p-4">
-        <TableNonPagApi table={table} />
+      <div
+        className="p-4"
+        style={{
+          maxHeight: "calc(100vh - 530px)",
+        }}
+      >
+        <TableNonPagApi table={memoTable} />
       </div>
       <div className="p-4 flex mx-auto">
-        <MyPagination table={table} />
+        <MyPagination table={memoTable} />
       </div>
     </div>
   );
