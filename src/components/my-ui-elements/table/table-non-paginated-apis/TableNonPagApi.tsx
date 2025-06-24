@@ -11,12 +11,12 @@
 import { flexRender, type Table as TanstackTable } from "@tanstack/react-table";
 
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table";
 
 // structure of props
@@ -25,7 +25,6 @@ export interface TableNonPagApiProps<TData> {
 }
 
 function TableNonPagApi<TData>({ table }: TableNonPagApiProps<TData>) {
-
   return (
     <>
       <div className="rounded-md border">
