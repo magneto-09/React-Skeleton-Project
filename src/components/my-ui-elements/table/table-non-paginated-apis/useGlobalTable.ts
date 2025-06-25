@@ -20,15 +20,17 @@ import { useState } from "react";
 interface TableNonPagApiProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  pageSize: number; // need-specific.
 }
 
 export const useGlobalTable = <TData, TValue>({
   columns,
   data,
+  pageSize,
 }: TableNonPagApiProps<TData, TValue>) => {
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 3,
+    pageSize: pageSize,
   });
 
   const [sorting, setSorting] = useState<SortingState>([]);
