@@ -4,7 +4,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
+if (import.meta.env.PROD) {
+  disableReactDevTools();
+}
+
+export const themeObj = {
+  appTheme: "oklch(0.541 0.281 293.009)",
+};
+
+// default react-query config
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
