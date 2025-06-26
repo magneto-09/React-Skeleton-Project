@@ -6,7 +6,11 @@ const config: Config = {
     files: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   },
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Open Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [lineClamp],
 };

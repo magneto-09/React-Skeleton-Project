@@ -16,12 +16,14 @@ export const sizeObj = {
 
 // colorPalleteObj to match the colorPallete type
 export const colorPalleteObj = {
-  default: "	#000000",
+  white: "rgb(255, 255, 255)",
+  default: "	#263238",
   hint: " #767686",
   danger: " #DC3545",
   warning: "	#fe6e31",
   success: "	#18c098",
   primary: "	#0075FF",
+  violet: " #7A3B97",
 } as const;
 
 const Text = ({
@@ -40,8 +42,8 @@ const Text = ({
       className={clsx(
         sizeObj[size],
         strong && "font-semibold",
-        !strong && "font-medium", // fallback wt.
-        underline && "underline-offset-4",
+        !strong && "font-normal", // fallback wt.
+        underline && "underline underline-offset-4",
         ellipsis && "truncate",
         multilineEllipsis && `line-clamp-3`,
         className
@@ -49,7 +51,6 @@ const Text = ({
       style={{
         ...style,
         color: colorPalleteObj[type],
-        fontFamily: "serif",
       }}
     >
       {children}

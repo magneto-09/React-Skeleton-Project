@@ -29,8 +29,6 @@ export const httpClient = {
       return fetchedData?.data;
     } catch (error) {
       console.log(error);
-      // TODO:
-      // add an error route in app. create error page. always redirect to there.
     }
   },
 };

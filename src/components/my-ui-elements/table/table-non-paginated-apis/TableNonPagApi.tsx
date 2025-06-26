@@ -18,6 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import NoDataUI from "../../error-boundary/NoDataUI";
 
 // structure of props
 export interface TableNonPagApiProps<TData> {
@@ -27,7 +28,7 @@ export interface TableNonPagApiProps<TData> {
 function TableNonPagApi<TData>({ table }: TableNonPagApiProps<TData>) {
   return (
     <>
-      <div className="rounded-md border">
+      <div className="rounded-lg border-1">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -73,10 +74,8 @@ function TableNonPagApi<TData>({ table }: TableNonPagApiProps<TData>) {
                   colSpan={table.getAllColumns().length}
                   className="h-24 text-center"
                 >
-                  No results.
-                  {/* TODO:
-                NoDataUI -- add it 
-                */}
+                  <NoDataUI />
+
                 </TableCell>
               </TableRow>
             )}
