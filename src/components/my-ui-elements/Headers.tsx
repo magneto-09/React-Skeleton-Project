@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Text from "./my-ui-elements/text/Text";
+import Text from "./text/Text";
 
 const Headers = () => {
   const navTo = useNavigate();
@@ -13,7 +13,10 @@ const Headers = () => {
             className="h-8"
             alt="Flowbite Logo"
           />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span
+            className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hover:cursor-pointer"
+            onClick={() => navTo("/")}
+          >
             Flowbite
           </span>
         </div>

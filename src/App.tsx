@@ -2,9 +2,12 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
 // lazy load the component.
-const SignUpForm = lazy(() => import("./components/SignUp"));
-const SignInForm = lazy(() => import("./components/SignIn"));
-const Headers = lazy(() => import("./components/Headers"));
+const SignUpForm = lazy(() => import("./components/my-ui-elements/SignUp"));
+const SignInForm = lazy(() => import("./components/my-ui-elements/SignIn"));
+const Headers = lazy(() => import("./components/my-ui-elements/Headers"));
+const PageNotFound = lazy(
+  () => import("./components/my-ui-elements/error-boundary/PageNotFound")
+);
 const DummyComponent = lazy(
   () => import("./components/my-ui-elements/table/DummyComponent")
 );
@@ -23,6 +26,9 @@ const App = () => {
         <Route path="/sign-in" element={<SignInForm />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/users" element={<DummyComponent />} />
+
+        {/* Define in the last - ALWAYS🚀 */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Suspense>
   );

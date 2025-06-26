@@ -17,7 +17,9 @@ export type colorPallete =
   | "danger"
   | "warning"
   | "success"
-  | "primary";
+  | "primary"
+  | "white"
+  | "violet";
 
 export interface TextProps {
   children: ReactNode;

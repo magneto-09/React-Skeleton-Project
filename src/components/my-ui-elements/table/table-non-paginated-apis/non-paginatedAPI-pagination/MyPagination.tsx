@@ -39,7 +39,7 @@ function MyPagination<TData>({
         <div className="flex items-center gap-8">
           <PageSize table={table} />
           <Pagination
-            count={totalPageCnt}
+            count={10}
             page={table?.getState()?.pagination?.pageIndex + 1}
             defaultPage={1}
             color="secondary"

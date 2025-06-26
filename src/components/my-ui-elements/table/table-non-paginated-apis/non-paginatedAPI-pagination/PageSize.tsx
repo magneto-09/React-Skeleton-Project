@@ -24,9 +24,11 @@ export default function PageSize<TData>({ table }: TableNonPagApiProps<TData>) {
         minWidth: 150,
         "& .MuiInputLabel-root": {
           color: themeObj?.appTheme,
+          fontFamily: themeObj?.appFontFamily,
         },
         "& .MuiOutlinedInput-root": {
           color: themeObj?.appTheme,
+          fontFamily: themeObj?.appFontFamily,
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor: themeObj?.appTheme,
           },
