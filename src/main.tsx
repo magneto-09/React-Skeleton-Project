@@ -5,6 +5,8 @@ import App from "./App.tsx";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+import { ErrorBoundary } from "react-error-boundary";
+import Fallback from "./components/my-ui-elements/error-boundary/Fallback.tsx";
 
 if (import.meta.env.PROD) {
   disableReactDevTools();
@@ -12,6 +14,7 @@ if (import.meta.env.PROD) {
 
 export const themeObj = {
   appTheme: "oklch(0.541 0.281 293.009)",
+  appFontFamily: "Inter, Arial, Helvetica, sans-serif",
 };
 
 // default react-query config
@@ -28,10 +31,12 @@ const queryClient = new QueryClient({
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </StrictMode>
+    <ErrorBoundary fallbackRender={Fallback}>
+      <StrictMode>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </StrictMode>
+    </ErrorBoundary>
   </BrowserRouter>
 );

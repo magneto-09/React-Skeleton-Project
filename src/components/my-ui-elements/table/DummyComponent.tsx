@@ -7,11 +7,11 @@ import Modal from "@mui/material/Modal";
 import { useQuery } from "@tanstack/react-query";
 import { type ColumnDef } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
+import { SkeletonLoader } from "../SkeletonLoader";
 import Text from "../text/Text";
 import MyPagination from "./table-non-paginated-apis/non-paginatedAPI-pagination/MyPagination";
 import TableNonPagApi from "./table-non-paginated-apis/TableNonPagApi";
 import { useGlobalTable } from "./table-non-paginated-apis/useGlobalTable";
-import { SkeletonLoader } from "../SkeletonLoader";
 
 // ************************************** Dummy Setup 🚀🚀**************************************
 
@@ -184,18 +184,13 @@ export default function DummyComponent() {
   };
 
   return (
-    <>
-      <div className="container mx-auto flex flex-col gap-24 justify-center border-2 border-blue-500 rounded-lg">
+    <div className="py-8 px-12">
+      <div className="container mx-auto flex flex-col gap-8 justify-center border-2 border-blue-500 rounded-lg">
         {isFetching ? (
           <SkeletonLoader />
         ) : (
           <>
-            <div
-              className="p-4"
-              style={{
-                height: "calc(100vh - 400px)",
-              }}
-            >
+            <div className="p-4">
               <TableNonPagApi table={memoTable} />
             </div>
             <div className="p-4 flex mx-auto">
@@ -261,6 +256,6 @@ export default function DummyComponent() {
       ) : (
         <></>
       )}
-    </>
+    </div>
   );
 }
